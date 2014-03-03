@@ -42,10 +42,7 @@ function undo( e ){
 
 if( $.inArray( mw.config.get( 'wgAction' ), [ 'edit', 'submit' ] ) !== -1 ){
 	$( function(){
-		var $changes = $( 'table.diff' ).find( '.diff-deletedline, .diff-addedline' );
-		if( $changes.length ){
-			$changes.dblclick( undo );
-		}
+		$( '#mw-content-text' ).on( 'click', '.diff-deletedline, .diff-addedline', undo );
 	} );
 }
 
