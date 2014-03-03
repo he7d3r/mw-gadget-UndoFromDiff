@@ -15,22 +15,18 @@ function undo( e ){
 		$box = $( '#wpTextbox1' ),
 		text = $box.val(),
 		$diffButton,
+		match,
 		reNewText;
-	// console.log( 'oldText', oldText );
-	// console.log( 'newText', newText );
 	if( !newText ){
 		alert( 'The script is not able to undo this change (yet!).' );
 		return;
 	}
-	reNewText = new RegExp( $.escapeRE( newText ) ); // , 'g'
-/*	console.log( 'reNewText', reNewText );
-	var match = text.match( newText )
-	console.log( 'match', match );
-	console.log( 'match.length', match.length );
+	reNewText = new RegExp( $.escapeRE( newText ), 'g' );
+	match = text.match( reNewText )
 	if( match.length !== 1 ){
-		alert( 'The script is not able to undo this change (yet!).' );
+		alert( 'This text appears more than once in the page, so it is safer to fix it manually.' );
 		return;
-	}*/
+	}
 	$box.val( text.replace( reNewText, oldText ) );
 	// Support for [[w:en:User:Js/ajaxPreview]]
 	$diffButton = $( '#wpDiffLive' );
