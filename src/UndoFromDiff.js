@@ -14,6 +14,7 @@ function undo( e ){
 		newText = $row.find( 'td.diff-addedline' ).text(),
 		$box = $( '#wpTextbox1' ),
 		text = $box.val(),
+		$diffButton,
 		reNewText;
 	// console.log( 'oldText', oldText );
 	// console.log( 'newText', newText );
@@ -31,7 +32,12 @@ function undo( e ){
 		return;
 	}*/
 	$box.val( text.replace( reNewText, oldText ) );
-	$( '#wpDiff' ).click();
+	// Support for [[w:en:User:Js/ajaxPreview]]
+	$diffButton = $( '#wpDiffLive' );
+	if( !$diffButton.length ){
+		$diffButton = $( '#wpDiff' );
+	}
+	$diffButton.click();
 }
 
 if( $.inArray( mw.config.get( 'wgAction' ), [ 'edit', 'submit' ] ) !== -1 ){
