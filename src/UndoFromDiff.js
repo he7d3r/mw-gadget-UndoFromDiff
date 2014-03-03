@@ -42,7 +42,7 @@ function undo( e ){
 
 if( $.inArray( mw.config.get( 'wgAction' ), [ 'edit', 'submit' ] ) !== -1 ){
 	$( function(){
-		$( '#mw-content-text' ).on( 'click', '.diff-deletedline, .diff-addedline', undo );
+		$( '#mw-content-text' ).on( 'dblclick', '.diff-deletedline, .diff-addedline', undo );
 	} );
 }
 
