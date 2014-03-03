@@ -22,7 +22,7 @@ function undo( e ){
 		return;
 	}
 	reNewText = new RegExp( $.escapeRE( newText ), 'g' );
-	match = text.match( reNewText )
+	match = text.match( reNewText );
 	if( match.length !== 1 ){
 		alert( 'This text appears more than once in the page, so it is safer to fix it manually.' );
 		return;
