@@ -1,5 +1,5 @@
 /**
- * Allow undoing parts of a change by clicking in the parts of a diff
+ * Allow undoing parts of a change by pressing CTRL and double clicking in the parts of a diff
  * @author: [[User:Helder.wiki]]
  * @tracking: [[Special:GlobalUsage/User:Helder.wiki/Tools/UndoFromDiff.js]] ([[File:User:Helder.wiki/Tools/UndoFromDiff.js]])
  */
@@ -17,6 +17,9 @@ function undo( e ){
 		$diffButton,
 		match,
 		reNewText;
+	if ( !e.ctrlKey ) {
+		return;
+	}
 	if( !newText ){
 		alert( 'The script is not able to undo this change (yet!).' );
 		return;
