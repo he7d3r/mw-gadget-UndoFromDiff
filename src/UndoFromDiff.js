@@ -2,7 +2,6 @@
  * Allow undoing parts of a change by pressing CTRL and double clicking in the parts of a diff
  * @author: Helder (https://github.com/he7d3r)
  * @license: CC BY-SA 3.0 <https://creativecommons.org/licenses/by-sa/3.0/>
- * @tracking: [[Special:GlobalUsage/User:Helder.wiki/Tools/UndoFromDiff.js]] ([[File:User:Helder.wiki/Tools/UndoFromDiff.js]])
  */
 /*jshint browser: true, camelcase: true, curly: true, eqeqeq: true, immed: true, latedef: true, newcap: true, noarg: true, noempty: true, nonew: true, quotmark: true, undef: true, unused: true, strict: true, trailing: true, maxlen: 120, evil: true, onevar: true */
 /*global jQuery, mediaWiki */
