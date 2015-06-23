@@ -22,7 +22,7 @@
 			alert( 'The script is not able to undo this change (yet!).' );
 			return;
 		}
-		reNewText = new RegExp( $.escapeRE( newText ), 'g' );
+		reNewText = new RegExp( mw.RegExp.escape( newText ), 'g' );
 		match = text.match( reNewText );
 		if ( match.length !== 1 ) {
 			alert( 'This text appears more than once in the page, so it is safer to fix it manually.' );
@@ -38,7 +38,10 @@
 	}
 
 	if ( $.inArray( mw.config.get( 'wgAction' ), [ 'edit', 'submit' ] ) !== -1 ) {
-		$( function () {
+		$.when(
+			mw.loader.using( 'mediawiki.RegExp' ),
+			$.ready
+		).then( function () {
 			$( '#mw-content-text' ).on( 'dblclick', '.diff-deletedline, .diff-addedline', undo );
 		} );
 	}
