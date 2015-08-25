@@ -24,7 +24,7 @@
 		}
 		reNewText = new RegExp( mw.RegExp.escape( newText ), 'g' );
 		match = text.match( reNewText );
-		if ( match.length !== 1 ) {
+		if ( match && match.length !== 1 ) {
 			alert( 'This text appears more than once in the page, so it is safer to fix it manually.' );
 			return;
 		}
