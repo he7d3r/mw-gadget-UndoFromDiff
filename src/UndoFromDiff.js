@@ -11,7 +11,7 @@
 			oldText = $row.find( 'td.diff-deletedline' ).text(),
 			newText = $row.find( 'td.diff-addedline' ).text(),
 			$box = $( '#wpTextbox1' ),
-			text = $box.val(),
+			text = $box.textSelection( 'getContents' ),
 			$diffButton,
 			match,
 			reNewText;
@@ -28,7 +28,7 @@
 			alert( 'This text appears more than once in the page, so it is safer to fix it manually.' );
 			return;
 		}
-		$box.val( text.replace( reNewText, oldText ) );
+		$box.textSelection( 'setContents', text.replace( reNewText, oldText ) );
 		// Support for [[w:en:User:Js/ajaxPreview]]
 		$diffButton = $( '#wpDiffLive' );
 		if ( !$diffButton.length ) {
@@ -39,7 +39,7 @@
 
 	if ( $.inArray( mw.config.get( 'wgAction' ), [ 'edit', 'submit' ] ) !== -1 ) {
 		$.when(
-			mw.loader.using( 'mediawiki.RegExp' ),
+			mw.loader.using( [ 'mediawiki.RegExp', 'jquery.textSelection' ] ),
 			$.ready
 		).then( function () {
 			$( '#mw-content-text' ).on( 'dblclick', '.diff-deletedline, .diff-addedline', undo );
