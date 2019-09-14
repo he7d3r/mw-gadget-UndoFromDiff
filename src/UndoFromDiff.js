@@ -22,7 +22,7 @@
 			alert( 'The script is not able to undo this change (yet!).' );
 			return;
 		}
-		reNewText = new RegExp( mw.RegExp.escape( newText ), 'g' );
+		reNewText = new RegExp( mw.util.escapeRegExp( newText ), 'g' );
 		match = text.match( reNewText );
 		if ( match && match.length !== 1 ) {
 			alert( 'This text appears more than once in the page, so it is safer to fix it manually.' );
@@ -39,7 +39,7 @@
 
 	if ( $.inArray( mw.config.get( 'wgAction' ), [ 'edit', 'submit' ] ) !== -1 ) {
 		$.when(
-			mw.loader.using( [ 'mediawiki.RegExp', 'jquery.textSelection' ] ),
+			mw.loader.using( [ 'mediawiki.util', 'jquery.textSelection' ] ),
 			$.ready
 		).then( function () {
 			$( '#mw-content-text' ).on( 'dblclick', '.diff-deletedline, .diff-addedline', undo );
